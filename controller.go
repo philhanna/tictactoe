@@ -88,6 +88,11 @@ func (c *Controller) Run() {
 		// until a valid move is specified.
 		for {
 			player = *c.current
+
+			// Tell the view to redisplay the board
+			c.view.PrintMessage(fmt.Sprintf("\nPlayer %s's move...", player.GetCode()))
+			c.view.Print()
+
 			board := c.model.GetBoard()
 			move = player.GetNextMove(board)
 			if !c.model.IsEmptySquare(move.Row, move.Col) {
@@ -99,10 +104,6 @@ func (c *Controller) Run() {
 
 		// Set the player's code in the board
 		c.model.Set(move.Row, move.Col, player.GetCode())
-
-		// Tell the view to redisplay the board
-		c.view.PrintMessage(fmt.Sprintf("\nPlayer %s's move...", player.GetCode()))
-		c.view.Print()
 
 		// Toggle the players
 		c.toggle()

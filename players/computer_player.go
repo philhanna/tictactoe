@@ -3,6 +3,7 @@ package tictactoe
 import (
 	"math/rand"
 	"time"
+	mvc "github.com/philhanna/tictactoe"
 )
 
 // ---------------------------------------------------------------------
@@ -11,7 +12,7 @@ import (
 
 // ComputerPlayer is a structure with a player code (X or O)
 type ComputerPlayer struct {
-	code Code
+	code mvc.Code
 }
 
 // ---------------------------------------------------------------------
@@ -20,7 +21,7 @@ type ComputerPlayer struct {
 
 // Creates a new computer player with the code of X or O.
 // Returns a pointer to this structure.
-func NewComputerPlayer(code Code) *ComputerPlayer {
+func NewComputerPlayer(code mvc.Code) *ComputerPlayer {
 	p := new(ComputerPlayer)
 	p.code = code
 	return p
@@ -31,16 +32,16 @@ func NewComputerPlayer(code Code) *ComputerPlayer {
 // ---------------------------------------------------------------------
 
 // GetNextMove returns the player's chosen move.
-func (self ComputerPlayer) GetNextMove(board [3][3]Code) Location {
+func (self ComputerPlayer) GetNextMove(board [3][3]mvc.Code) mvc.Location {
 
 	time.Sleep(time.Second * 1) // Don't want the game to go too fase
 
 	// Bonehead strategy: just pick an unoccupied square at random
-	empties := make([]Location, 0)
+	empties := make([]mvc.Location, 0)
 	for row := 0; row < 3; row++ {
 		for col := 0; col < 3; col++ {
-			if board[row][col] == NONE {
-				newLocation := Location{Row: row, Col: col}
+			if board[row][col] == mvc.NONE {
+				newLocation := mvc.Location{Row: row, Col: col}
 				empties = append(empties, newLocation)
 			}
 		}
@@ -57,11 +58,6 @@ func (self ComputerPlayer) GetNextMove(board [3][3]Code) Location {
 }
 
 // GetCode returns this player's code
-func (self ComputerPlayer) GetCode() Code {
+func (self ComputerPlayer) GetCode() mvc.Code {
 	return self.code
-}
-
-// SetCode sets this player's code to X or O
-func (self ComputerPlayer) SetCode(code Code) {
-	self.code = code
 }

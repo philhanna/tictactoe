@@ -12,3 +12,4 @@ type Location struct {
 func (l Location) String() string {
 	return fmt.Sprintf("(%d,%d)", l.Row, l.Col)
 }
+

@@ -42,13 +42,14 @@ func NewConsoleView(model mvc.ReadOnlyModel) *ConsoleView {
 func (v *ConsoleView) Print() {
 	myBoard := v.model.GetBoard()
 	fmt.Println()
-	fmt.Printf("+---+---+---+\n")
-	fmt.Printf("| %s | %s | %s |\n", myBoard[0][0], myBoard[0][1], myBoard[0][2])
-	fmt.Printf("+---+---+---+\n")
-	fmt.Printf("| %s | %s | %s |\n", myBoard[1][0], myBoard[1][1], myBoard[1][2])
-	fmt.Printf("+---+---+---+\n")
-	fmt.Printf("| %s | %s | %s |\n", myBoard[2][0], myBoard[2][1], myBoard[2][2])
-	fmt.Printf("+---+---+---+\n")
+	fmt.Printf("    0   1   2\n")
+	fmt.Printf("  +---+---+---+\n")
+	fmt.Printf("0 | %s | %s | %s |\n", myBoard[0][0], myBoard[0][1], myBoard[0][2])
+	fmt.Printf("  +---+---+---+\n")
+	fmt.Printf("1 | %s | %s | %s |\n", myBoard[1][0], myBoard[1][1], myBoard[1][2])
+	fmt.Printf("  +---+---+---+\n")
+	fmt.Printf("2 | %s | %s | %s |\n", myBoard[2][0], myBoard[2][1], myBoard[2][2])
+	fmt.Printf("  +---+---+---+\n")
 }
 
 // PrintMessage displays a message
