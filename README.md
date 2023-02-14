@@ -43,6 +43,8 @@ The view implemented in this package is simply one that prints to the
 console.  A graphical view (or a web-based one) can be substituted.  All
 it needs to do is implement the same methods.
 
+See the `views` subdirectory for sample views.
+
 ## Controller
 The controller handles the action of the game. It has the single public
 method:
