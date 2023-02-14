@@ -4,6 +4,8 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strings"
+
 	mvc "github.com/philhanna/tictactoe"
 )
 
@@ -47,6 +49,7 @@ func (self HumanPlayer) GetNextMove(board [3][3]mvc.Code) mvc.Location {
 	for {
 		fmt.Printf("\nEnter row, col for player %s move: ", self.code)
 		text, _ := reader.ReadString('\n')
+		text = strings.TrimSuffix(text, "\n")
 		move, err = mvc.ParseLocation(text)
 		if err == nil {
 			break
