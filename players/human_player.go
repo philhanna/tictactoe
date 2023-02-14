@@ -4,8 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"regexp"
-	"strconv"
 	mvc "github.com/philhanna/tictactoe"
 )
 
@@ -44,29 +42,16 @@ func (self HumanPlayer) GetCode() mvc.Code {
 // GetNextMove returns the player's chosen move.
 func (self HumanPlayer) GetNextMove(board [3][3]mvc.Code) mvc.Location {
 	var move mvc.Location
+	var err error
 	reader := bufio.NewReader(os.Stdin)
 	for {
 		fmt.Printf("\nEnter row, col for player %s move: ", self.code)
 		text, _ := reader.ReadString('\n')
-		re := regexp.MustCompile(`\d+`)
-		result := re.FindAllString(text, -1)
-		if result == nil || len(result) != 2 {
-			fmt.Printf("Error: must enter two numbers.\n")
-		} else {
-			rowString, colString := result[0], result[1]
-			row, _ := strconv.Atoi(rowString)
-			col, _ := strconv.Atoi(colString)
-			if row < 0 || row >= 3 {
-				fmt.Printf("Error: row is out of bounds\n")
-			} else {
-				if col < 0 || col >= 3 {
-					fmt.Printf("Error: col is out of bounds\n")
-				} else {
-					move = mvc.Location{Row: row, Col: col}
-					break
-				}
-			}
+		move, err = mvc.ParseLocation(text)
+		if err == nil {
+			break
 		}
+		fmt.Printf("Error: %s\n", err.Error())
 	}
 	return move
 }
