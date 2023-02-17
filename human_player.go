@@ -69,7 +69,7 @@ func (self HumanPlayer) GetNextMove(c *Controller) *Location {
 		} else {
 
 			// Otherwise, display error message and prompt again
-			msg := fmt.Sprintf("Error: %v is not a valid location", location)
+			msg := fmt.Sprintf("Error: %s is not a valid location", text)
 			c.view.PrintMessage(msg)
 		}
 	}
