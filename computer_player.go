@@ -1,6 +1,7 @@
 package tictactoe
 
 import (
+	"fmt"
 	"math/rand"
 	"time"
 )
@@ -66,6 +67,8 @@ func (self ComputerPlayer) GetNextMove(c *Controller) Location {
 	// Choose one of the empties at random
 	r := rand.Intn(len(empties))
 	chosenLocation := empties[r]
+
+	c.view.PrintMessage(fmt.Sprintf("%s chooses %s\n", self.name, chosenLocation))
 
 	return chosenLocation
 }

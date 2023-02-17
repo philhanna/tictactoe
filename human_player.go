@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
 )
 
 // ---------------------------------------------------------------------
@@ -49,13 +48,12 @@ func (self HumanPlayer) GetNextMove(c *Controller) Location {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		// Ask player for a (row,col) pair
-		msg := fmt.Sprintf("\nEnter row, col for %s's move:", self.name)
+		msg := fmt.Sprintf("\nEnter row, col for %s move:", self.code)
 		c.view.PrintMessage(msg)
 
 		// Read the player's response
 		scanner.Scan()
 		text := scanner.Text()
-		text = strings.TrimSuffix(text, "\n")
 
 		// Parse the response
 		location, err := ParseLocation(text)

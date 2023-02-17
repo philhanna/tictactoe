@@ -68,7 +68,7 @@ func main() {
 		for {
 
 			// Tell the view to redisplay the board
-			msg := fmt.Sprintf("\nPlayer %s's move...\n", player.GetCode())
+			msg := fmt.Sprintf("\n%s's move...", player.GetName())
 			v.PrintMessage(msg)
 			v.Print(m.GetBoard())
 
