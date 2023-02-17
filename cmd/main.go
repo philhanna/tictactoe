@@ -89,6 +89,7 @@ func main() {
 			} else {
 				player = xPlayer
 			}
+			break
 		}
 	}
 }
