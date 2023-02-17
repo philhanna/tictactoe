@@ -48,8 +48,8 @@ func (self HumanPlayer) GetNextMove(c *Controller) *Location {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		// Ask player for a (row,col) pair
-		msg := fmt.Sprintf("\nEnter row, col for %s move:", self.code)
-		c.view.PrintMessage(msg)
+		msg := fmt.Sprintf("Enter row, col for %s move:", self.code)
+		c.view.ShowMessage(msg)
 
 		// Read the player's response
 		scanner.Scan()
@@ -65,12 +65,12 @@ func (self HumanPlayer) GetNextMove(c *Controller) *Location {
 
 			// If the location is valid, return it
 			return &location
-			
+
 		} else {
 
 			// Otherwise, display error message and prompt again
 			msg := fmt.Sprintf("Error: %s is not a valid location", text)
-			c.view.PrintMessage(msg)
+			c.view.ShowMessage(msg)
 		}
 	}
 }

@@ -50,9 +50,9 @@ outer:
 
 			// A player has won. Tell the view to announce the winning
 			// player and vector
-			v.Print(m.GetBoard())
+			v.Show(m.GetBoard())
 			msg := fmt.Sprintf("%s is the winner. Vector is %v", winner, vector)
-			v.PrintMessage(msg)
+			v.ShowMessage(msg)
 			break
 		}
 
@@ -61,8 +61,8 @@ outer:
 
 			// The game is a draw. Tell view to announce that the game
 			// is a draw and exit
-			v.Print(m.GetBoard())
-			v.PrintMessage("Game is a draw")
+			v.Show(m.GetBoard())
+			v.ShowMessage("Game is a draw")
 			break
 		}
 
@@ -72,8 +72,8 @@ outer:
 
 			// Tell the view to redisplay the board
 			msg := fmt.Sprintf("\n%s's move...", player.GetName())
-			v.PrintMessage(msg)
-			v.Print(m.GetBoard())
+			v.ShowMessage(msg)
+			v.Show(m.GetBoard())
 
 			// Ask the player for their next location
 			location := player.GetNextMove(c)
@@ -82,7 +82,7 @@ outer:
 			}
 			if !m.IsEmptySquare(location.Row, location.Col) {
 				errmsg := fmt.Sprintf("%s is not empty", location)
-				v.PrintMessage(errmsg)
+				v.ShowMessage(errmsg)
 				continue // Try again
 			}
 

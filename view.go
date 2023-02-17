@@ -10,7 +10,7 @@ import (
 
 // View is a simple implementation of view that just prints to the
 // console.
-type View struct {}
+type View struct{}
 
 // ---------------------------------------------------------------------
 // Constructors
@@ -26,7 +26,7 @@ func NewView() *View {
 // Methods
 // ---------------------------------------------------------------------
 
-// Print prints the board. This implementation uses:
+// Show prints the board. This implementation uses:
 //
 //	+---+---+---+
 //	| X | X | X |
@@ -35,7 +35,7 @@ func NewView() *View {
 //	+---+---+---+
 //	| X | X | X |
 //	+---+---+---+
-func (v *View) Print(board [][]Code) {
+func (v *View) Show(board [][]Code) {
 	fmt.Printf("\n")
 	fmt.Printf("    0   1   2\n")
 	fmt.Printf("  +---+---+---+\n")
@@ -47,7 +47,7 @@ func (v *View) Print(board [][]Code) {
 	fmt.Printf("  +---+---+---+\n")
 }
 
-// PrintMessage displays a message
-func (v *View) PrintMessage(s string) {
+// ShowMessage displays a message
+func (v *View) ShowMessage(s string) {
 	fmt.Printf("%s\n", s)
 }

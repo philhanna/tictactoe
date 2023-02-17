@@ -49,7 +49,7 @@ func (self ComputerPlayer) GetNextMove(c *Controller) *Location {
 	time.Sleep(time.Second * 1) // Don't want the game to go too fast
 
 	// Bonehead strategy: just pick an unoccupied square at random
-	
+
 	board := c.model.GetBoard()
 	empties := make([]Location, 0)
 	for row := 0; row < 3; row++ {
@@ -68,8 +68,7 @@ func (self ComputerPlayer) GetNextMove(c *Controller) *Location {
 	r := rand.Intn(len(empties))
 	chosenLocation := empties[r]
 
-	c.view.PrintMessage(fmt.Sprintf("%s chooses %s\n", self.name, chosenLocation))
+	c.view.ShowMessage(fmt.Sprintf("%s chooses %s\n", self.name, chosenLocation))
 
 	return &chosenLocation
 }
-
