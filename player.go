@@ -10,6 +10,9 @@ type Player interface {
 	// GetCode returns this player's code (X or O)
 	GetCode() Code
 
+	// GetName returns this player's name
+	GetName() string
+	
 	// GetNextMove returns the row and column of the next move
 	GetNextMove(c *Controller) Location
 }

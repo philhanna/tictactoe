@@ -37,6 +37,11 @@ func (self ComputerPlayer) GetCode() Code {
 	return self.code
 }
 
+// GetName returns the computer player's name
+func (self ComputerPlayer) GetName() string {
+	return self.name
+}
+
 // GetNextMove returns the player's chosen move.
 func (self ComputerPlayer) GetNextMove(c *Controller) Location {
 

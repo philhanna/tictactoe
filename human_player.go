@@ -39,6 +39,11 @@ func (self HumanPlayer) GetCode() Code {
 	return self.code
 }
 
+// GetName returns the human player's name
+func (self HumanPlayer) GetName() string {
+	return self.name
+}
+
 // GetNextMove returns the player's chosen move.
 func (self HumanPlayer) GetNextMove(c *Controller) Location {
 	scanner := bufio.NewScanner(os.Stdin)
