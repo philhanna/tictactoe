@@ -10,6 +10,6 @@ type Player interface {
 	// GetCode returns this player's code (X or O)
 	GetCode() Code
 
-	// GetNextMove returns the
-	GetNextMove(board [3][3]Code) Location
+	// GetNextMove returns the row and column of the next move
+	GetNextMove(c *Controller) Location
 }

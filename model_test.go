@@ -15,13 +15,13 @@ func TestModel_IsEmptySquare(t *testing.T) {
 		args  args
 		want  bool
 	}{
-		{"All empty", Model{[3][3]Code{}}, args{1, 1}, true},
-		{"Not all empty", Model{[3][3]Code{
+		{"All empty", *NewModel(), args{1, 1}, true},
+		{"Not all empty", Model{[][]Code{
 			{O, NONE, NONE},
 			{NONE, NONE, X},
 			{NONE, NONE, NONE},
 		}}, args{1, 2}, false},
-		{"Not right location", Model{[3][3]Code{
+		{"Not right location", Model{[][]Code{
 			{O, NONE, NONE},
 			{NONE, NONE, X},
 			{NONE, NONE, NONE},
@@ -43,18 +43,18 @@ func TestModel_IsBoardFull(t *testing.T) {
 		model Model
 		want  bool
 	}{
-		{"All empty", Model{[3][3]Code{}}, false},
-		{"No winner", Model{[3][3]Code{
+		{"All empty", *NewModel(), false},
+		{"No winner", Model{[][]Code{
 			{O, NONE, NONE},
 			{NONE, NONE, X},
 			{NONE, NONE, NONE},
 		}}, false},
-		{"X winner", Model{[3][3]Code{
+		{"X winner", Model{[][]Code{
 			{X, NONE, NONE},
 			{NONE, X, O},
 			{NONE, NONE, X},
 		}}, false},
-		{"Full", Model{[3][3]Code{
+		{"Full", Model{[][]Code{
 			{X, O, X},
 			{O, X, O},
 			{X, X, O},

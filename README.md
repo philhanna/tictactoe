@@ -46,15 +46,21 @@ it needs to do is implement the same methods.
 See the `views` subdirectory for sample views.
 
 ## Controller
+The controller receives events from the players in the application
+and applies them to the model or the view.
+
+
+## Application
 The controller handles the action of the game. It has the single public
 method:
 
 - `Run()` - Runs the game
 
-When created, the controller must be passed:
+When created, the application creates:
+- The `X` and `O` players.
 - The model
 - The view
-- The `X` and `O` players.
+- The controller
 
 When `Run` is called:
 - Sets the current player to `X`.
