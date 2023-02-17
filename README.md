@@ -31,13 +31,13 @@ The model has the following methods:
   If their values are all the same, returns the player code they all share.
 
 ## View
-The view handles displaying the board. It is created by the controller
-and has a read-only copy of the model's board.  It has the following
-methods:
+The view handles displaying the board. It is created by the controller and gets
+a read-only copy of the model's board from the controller when needed.  It has
+the following methods:
 
-- `Print()` - Displays the board.
-- `PrintMessage()` - Displays a message, e.g., indicating who won
-or that the game was a draw, or any error messages.
+- `Show()` - Displays the board.
+- `ShowMessage()` - Displays a message, e.g., indicating who won or that the
+  game was a draw, or any error messages.
 
 The view implemented in this package is simply one that prints to the
 console.  A graphical view (or a web-based one) can be substituted.  All
