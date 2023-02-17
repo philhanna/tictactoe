@@ -54,7 +54,8 @@ func (self HumanPlayer) GetNextMove(c *Controller) Location {
 
 		// Parse the response
 		location, err := ParseLocation(text)
-		if err != nil {
+		validMove := err == nil
+		if validMove {
 
 			// If the location is valid, return it
 			return location
