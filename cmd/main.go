@@ -50,6 +50,7 @@ outer:
 
 			// A player has won. Tell the view to announce the winning
 			// player and vector
+			v.Print(m.GetBoard())
 			msg := fmt.Sprintf("%s is the winner. Vector is %v", winner, vector)
 			v.PrintMessage(msg)
 			break
