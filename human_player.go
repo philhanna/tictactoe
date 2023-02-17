@@ -54,6 +54,9 @@ func (self HumanPlayer) GetNextMove(c *Controller) *Location {
 		// Read the player's response
 		scanner.Scan()
 		text := scanner.Text()
+		if text[0] == 'q' {
+			return nil
+		}
 
 		// Parse the response
 		location, err := ParseLocation(text)

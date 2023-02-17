@@ -42,6 +42,7 @@ func main() {
 
 	// Play the game until there is a winner or the board is full
 
+outer:
 	for {
 
 		// Ask the model if there a winner
@@ -74,6 +75,9 @@ func main() {
 
 			// Ask the player for their next location
 			location := player.GetNextMove(c)
+			if location == nil {
+				break outer
+			}
 			if !m.IsEmptySquare(location.Row, location.Col) {
 				errmsg := fmt.Sprintf("%s is not empty", location)
 				v.PrintMessage(errmsg)
