@@ -44,7 +44,7 @@ func (self HumanPlayer) GetNextMove(c *Controller) Location {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		// Ask player for a (row,col) pair
-		msg := fmt.Sprintf("\nEnter row, col for player %s move: ", self.code)
+		msg := fmt.Sprintf("\nEnter row, col for %s's move:", self.name)
 		c.view.PrintMessage(msg)
 
 		// Read the player's response
@@ -61,7 +61,7 @@ func (self HumanPlayer) GetNextMove(c *Controller) Location {
 		} else {
 
 			// Otherwise, display error message and prompt again
-			msg := fmt.Sprintf("Error: %s\n", err.Error())
+			msg := fmt.Sprintf("Error: %v is not a valid location", location)
 			c.view.PrintMessage(msg)
 		}
 	}
