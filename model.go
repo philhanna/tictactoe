@@ -61,11 +61,10 @@ func (m *Model) IsBoardFull() bool {
 }
 
 // GetWinner returns the winning player code and the winning vector.
-// If the game is not over, returns NONE, NO_VECTOR
+// If the game is not over, returns nil, nil.
 func (m *Model) GetWinner() (*Code, *Vector) {
 	for _, v := range Vectors {
-		code := m.CodeInAllOf(v)
-		if code != nil {
+		if code := m.CodeInAllOf(v); code != nil && *code != NONE {
 			return code, v
 		}
 	}
