@@ -25,8 +25,11 @@ func TestParseLocation(t *testing.T) {
 		want    Location
 		wantErr bool
 	}{
+		// Good ones
 		{"Good numbers", args{"1,2"}, Location{1, 2}, false},
 		{"With parens", args{"(2, 2)"}, Location{2, 2}, false},
+
+		// Bad ones
 		{"Row low", args{"(-1, 2)"}, Location{}, true},
 		{"Row high", args{"(3, 2)"}, Location{}, true},
 		{"Col low", args{"(1, -2)"}, Location{}, true},

@@ -4,9 +4,6 @@ import (
 	"bufio"
 	"fmt"
 	"os"
-	"strings"
-
-	mvc "github.com/philhanna/tictactoe"
 )
 
 // ---------------------------------------------------------------------
@@ -15,7 +12,7 @@ import (
 
 // HumanPlayer is a structure with a player code (X or O)
 type HumanPlayer struct {
-	code mvc.Code
+	code Code
 	name string
 }
 
@@ -25,7 +22,7 @@ type HumanPlayer struct {
 
 // Creates a new human player with the code of X or O.
 // Returns a pointer to this structure.
-func NewHumanPlayer(code mvc.Code, name string) *HumanPlayer {
+func NewHumanPlayer(code Code, name string) *HumanPlayer {
 	p := new(HumanPlayer)
 	p.code = code
 	p.name = name
@@ -37,24 +34,43 @@ func NewHumanPlayer(code mvc.Code, name string) *HumanPlayer {
 // ---------------------------------------------------------------------
 
 // GetCode returns this player's code
-func (self HumanPlayer) GetCode() mvc.Code {
+func (self HumanPlayer) GetCode() Code {
 	return self.code
 }
 
+// GetName returns the human player's name
+func (self HumanPlayer) GetName() string {
+	return self.name
+}
+
 // GetNextMove returns the player's chosen move.
-func (self HumanPlayer) GetNextMove(board [3][3]mvc.Code) mvc.Location {
-	var move mvc.Location
-	var err error
-	reader := bufio.NewReader(os.Stdin)
+func (self HumanPlayer) GetNextMove(c *Controller) *Location {
+	scanner := bufio.NewScanner(os.Stdin)
 	for {
-		fmt.Printf("\nEnter row, col for player %s move: ", self.code)
-		text, _ := reader.ReadString('\n')
-		text = strings.TrimSuffix(text, "\n")
-		move, err = mvc.ParseLocation(text)
-		if err == nil {
-			break
+		// Ask player for a (row,col) pair
+		msg := fmt.Sprintf("\nEnter row, col for %s move:", self.code)
+		c.view.PrintMessage(msg)
+
+		// Read the player's response
+		scanner.Scan()
+		text := scanner.Text()
+		if text[0] == 'q' {
+			return nil
 		}
-		fmt.Printf("Error: %s\n", err.Error())
+
+		// Parse the response
+		location, err := ParseLocation(text)
+		validMove := err == nil
+		if validMove {
+
+			// If the location is valid, return it
+			return &location
+			
+		} else {
+
+			// Otherwise, display error message and prompt again
+			msg := fmt.Sprintf("Error: %s is not a valid location", text)
+			c.view.PrintMessage(msg)
+		}
 	}
-	return move
 }

@@ -7,43 +7,24 @@ package tictactoe
 // Model is an abstract representation of the game. It has no visual
 // component and does not directly support user interaction.
 type Model struct {
-	board [3][3]Code
-}
-
-// ReadOnlyModel is a set of method(s) that a read-only model
-// must implement
-type ReadOnlyModel interface {
-	GetBoard() [3][3]Code
+	board [][]Code
 }
 
 // ---------------------------------------------------------------------
 // Constructors
 // ---------------------------------------------------------------------
 
-// NewModel creates a model and returns a pointer to it.
+// NewModel creates a model with a 3x3 empty board and returns a pointer
+// to it.
 func NewModel() *Model {
-	m := new(Model)
-	for row := 0; row < 3; row++ {
-		for col := 0; col < 3; col++ {
-			m.board[row][col] = NONE
-		}
+	board := [][]Code{
+		make([]Code, 3),
+		make([]Code, 3),
+		make([]Code, 3),
 	}
-	return m
+	model := Model{board}
+	return &model
 }
-
-/*
-	How to declare a model with explicit contents:
-
-	m := Model{[3][3]Code{
-		{O, NONE, NONE},
-		{NONE, NONE, X},
-		{NONE, NONE, NONE},
-		}}
-
-	A board is an array of three arrays of three codes.
-	An array of three codes is [3]Code{p0, p1, p2}.
-	See: https://go.dev/play/p/uNH5TQ9FndX
-*/
 
 // ---------------------------------------------------------------------
 // Methods
@@ -80,32 +61,31 @@ func (m *Model) IsBoardFull() bool {
 }
 
 // GetWinner returns the winning player code and the winning vector.
-// If the game is not over, returns NONE, NO_VECTOR
-func (m *Model) GetWinner() (Code, Vector) {
+// If the game is not over, returns nil, nil.
+func (m *Model) GetWinner() (*Code, *Vector) {
 	for _, v := range Vectors {
-		code := m.CodeInAllOf(v)
-		if code != NONE {
+		if code := m.CodeInAllOf(v); code != nil && *code != NONE {
 			return code, v
 		}
 	}
-	return NONE, NO_VECTOR
+	return nil, nil
 }
 
 // CodeInAllOf checks the three board locations referred to by the vector.
-// If their values are all the same, returns the code they all share.
-// Otherwise, returns NONE
-func (m *Model) CodeInAllOf(v Vector) Code {
-	p0 := m.board[v.loc0.Row][v.loc0.Col]
-	p1 := m.board[v.loc1.Row][v.loc1.Col]
-	p2 := m.board[v.loc2.Row][v.loc2.Col]
-	if p1 != p0 || p2 != p0 {
-		return NONE
+// If their values are all the same, returns a pointer to the code they all share.
+// Otherwise, returns nil
+func (m *Model) CodeInAllOf(v *Vector) *Code {
+	c0 := m.board[v.loc0.Row][v.loc0.Col]
+	c1 := m.board[v.loc1.Row][v.loc1.Col]
+	c2 := m.board[v.loc2.Row][v.loc2.Col]
+	if c1 != c0 || c2 != c0 {
+		return nil
 	}
-	return p0
+	return &c0
 }
 
 // GetBoard returns a copy of the board. It is functionally read-only,
-// because it does not refer back to the real board.
-func (m *Model) GetBoard() [3][3]Code {
+// because it does not refer back to the real board, only to its value.
+func (m *Model) GetBoard() [][]Code {
 	return m.board
 }
