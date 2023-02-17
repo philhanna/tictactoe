@@ -53,7 +53,8 @@ func (self HumanPlayer) GetNextMove(c *Controller) Location {
 		text = strings.TrimSuffix(text, "\n")
 
 		// Parse the response
-		if location, err := ParseLocation(text); err != nil {
+		location, err := ParseLocation(text)
+		if err != nil {
 
 			// If the location is valid, return it
 			return location
