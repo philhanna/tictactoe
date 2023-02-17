@@ -44,7 +44,7 @@ func (self HumanPlayer) GetName() string {
 }
 
 // GetNextMove returns the player's chosen move.
-func (self HumanPlayer) GetNextMove(c *Controller) Location {
+func (self HumanPlayer) GetNextMove(c *Controller) *Location {
 	scanner := bufio.NewScanner(os.Stdin)
 	for {
 		// Ask player for a (row,col) pair
@@ -61,7 +61,7 @@ func (self HumanPlayer) GetNextMove(c *Controller) Location {
 		if validMove {
 
 			// If the location is valid, return it
-			return location
+			return &location
 			
 		} else {
 

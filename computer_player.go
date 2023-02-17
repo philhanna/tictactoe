@@ -44,7 +44,7 @@ func (self ComputerPlayer) GetName() string {
 }
 
 // GetNextMove returns the player's chosen move.
-func (self ComputerPlayer) GetNextMove(c *Controller) Location {
+func (self ComputerPlayer) GetNextMove(c *Controller) *Location {
 
 	time.Sleep(time.Second * 1) // Don't want the game to go too fast
 
@@ -70,6 +70,6 @@ func (self ComputerPlayer) GetNextMove(c *Controller) Location {
 
 	c.view.PrintMessage(fmt.Sprintf("%s chooses %s\n", self.name, chosenLocation))
 
-	return chosenLocation
+	return &chosenLocation
 }
 

@@ -14,5 +14,5 @@ type Player interface {
 	GetName() string
 	
 	// GetNextMove returns the row and column of the next move
-	GetNextMove(c *Controller) Location
+	GetNextMove(c *Controller) *Location
 }
