@@ -61,6 +61,7 @@ outer:
 
 			// The game is a draw. Tell view to announce that the game
 			// is a draw and exit
+			v.Print(m.GetBoard())
 			v.PrintMessage("Game is a draw")
 			break
 		}
