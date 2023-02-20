@@ -4,6 +4,8 @@ This project adheres to [Semantic Versioning].
 The format is based on [Keep a Changelog].
 	
 ## [Unreleased]
+- Added this CHANGELOG
+- Added MIT License
 
 ## [v1.0.1] - 2023-02-17
 Updated README.md
