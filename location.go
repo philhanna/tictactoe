@@ -31,8 +31,9 @@ func (l Location) String() string {
 // ---------------------------------------------------------------------
 
 // ParseLocation gets a row and column number from a string. It verifies that:
-//	- There are two numbers in the string
-//	- Both are >= 0 and < 3
+//   - There are two numbers in the string
+//   - Both are >= 0 and < 3
+//
 // If any errors are detected, returns an error message.
 func ParseLocation(s string) (Location, error) {
 	re := regexp.MustCompile(`-?\d+`) // Allow for negative numbers
@@ -59,7 +60,7 @@ func ParseLocation(s string) (Location, error) {
 		err := errors.New(errmsg)
 		return Location{}, err
 	}
-	
+
 	// Everything looks good
 	newLoc := Location{row, col}
 	return newLoc, nil

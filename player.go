@@ -12,7 +12,7 @@ type Player interface {
 
 	// GetName returns this player's name
 	GetName() string
-	
+
 	// GetNextMove returns the row and column of the next move
 	GetNextMove(c *Controller) *Location
 }

@@ -1,4 +1,7 @@
 # tictactoe
+[![Go Report Card](https://goreportcard.com/badge/github.com/philhanna/tictactoe)][idGoReportCard]
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/philhanna/tictactoe)][idPkgGoDev]
+
 This is a sample application to illustrate the [model-view-controller
 (MVC)][idMVC] pattern.
 
@@ -89,3 +92,5 @@ Otherwise:
 [idMVC]: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller
 [idSOC]: https://en.wikipedia.org/wiki/Separation_of_concerns
 [idTTT]: https://en.wikipedia.org/wiki/Tic-tac-toe
+[idGoReportCard]: https://goreportcard.com/report/github.com/philhanna/tictactoe
+[idPkgGoDev]: https://pkg.go.dev/github.com/philhanna/tictactoe

@@ -1,15 +1,14 @@
 package tictactoe
 
-import (
-)
+import ()
 
 // ---------------------------------------------------------------------
 // Type definitions
 // ---------------------------------------------------------------------
 
 type Controller struct {
-	model   *Model
-	view    *View
+	model *Model
+	view  *View
 }
 
 // ---------------------------------------------------------------------
@@ -20,6 +19,7 @@ type Controller struct {
 // It takes the following parameters:
 //   - A pointer to the model
 //   - A pointer to the view
+//
 // It returns a pointer to the new controller.
 func NewController(model *Model, view *View) *Controller {
 	c := new(Controller)
